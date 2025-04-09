@@ -67,13 +67,13 @@ def Prima_Total(deducibleDM, deducibleRT, SA_RC, SA_GM):
     return Total, a, b, c, d
 
 # --- STREAMLIT APP ---
-st.title("Calculadora de Prima TOTAL")
+st.title("Calculadora de Prima")
 
 # Entradas
 deducibleDM = st.selectbox("Selecciona deducible de Daños Materiales (%)", list(daños_materiales.keys()))
 deducibleRT = st.selectbox("Selecciona deducible de Robo Total (%)", list(robo_total.keys()))
-SA_RC = st.number_input("Suma Asegurada RC", value=500000, step=50000)
-SA_GM = st.number_input("Suma Asegurada GM", value=100000, step=10000)
+SA_RC = st.number_input("Suma Asegurada para Responsabilidad Civil", value=500000, step=50000)
+SA_GM = st.number_input("Suma Asegurada para Gastos Médicos", value=100000, step=10000)
 
 if st.button("Calcular Prima Total"):
     total, a, b, c, d = Prima_Total(deducibleDM, deducibleRT, SA_RC, SA_GM)
@@ -85,4 +85,4 @@ if st.button("Calcular Prima Total"):
         st.markdown("---")
         st.header(f"💰 Prima TOTAL: ${total:.2f}")
     else:
-        st.error("Revisa que los deducibles ingresados sean válidos.")
+        st.error("Revisa que los deducibles o las sumas aseguradas ingresados sean válidos.")
